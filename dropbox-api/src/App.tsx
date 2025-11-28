@@ -1,12 +1,19 @@
-import './App.css'
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import DropboxLogin from './components/DropboxLogin';
+import OAuthCallback from './components/OAuthCallback';
+import ProjectFolder from './components/ProjectFolder';
+
+const App = () => {
   return (
-    <>
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>    
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/oauth/callback" element={<OAuthCallback />} />
+        <Route path="/project" element={<ProjectFolder />} />
+        <Route path="/" element={<DropboxLogin />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
